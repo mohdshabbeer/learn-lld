@@ -28,13 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
+            btnDemoLRU = new Button();
+            lboxOutput = new ListBox();
+            btnClear = new Button();
+            btnLaderBoard = new Button();
             SuspendLayout();
+            // 
+            // btnDemoLRU
+            // 
+            btnDemoLRU.Location = new Point(23, 23);
+            btnDemoLRU.Name = "btnDemoLRU";
+            btnDemoLRU.Size = new Size(106, 23);
+            btnDemoLRU.TabIndex = 0;
+            btnDemoLRU.Text = "LRU Demo";
+            btnDemoLRU.UseVisualStyleBackColor = true;
+            btnDemoLRU.Click += btnDemoLRU_Click;
+            // 
+            // lboxOutput
+            // 
+            lboxOutput.FormattingEnabled = true;
+            lboxOutput.Location = new Point(23, 70);
+            lboxOutput.Name = "lboxOutput";
+            lboxOutput.Size = new Size(434, 304);
+            lboxOutput.TabIndex = 1;
+            // 
+            // btnClear
+            // 
+            btnClear.Location = new Point(382, 41);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(75, 23);
+            btnClear.TabIndex = 2;
+            btnClear.Text = "Clear";
+            btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
+            // 
+            // btnLaderBoard
+            // 
+            btnLaderBoard.Location = new Point(135, 23);
+            btnLaderBoard.Name = "btnLaderBoard";
+            btnLaderBoard.Size = new Size(106, 23);
+            btnLaderBoard.TabIndex = 0;
+            btnLaderBoard.Text = "Leaderboard";
+            btnLaderBoard.UseVisualStyleBackColor = true;
+            btnLaderBoard.Click += btnLaderBoard_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(469, 394);
+            Controls.Add(btnClear);
+            Controls.Add(lboxOutput);
+            Controls.Add(btnLaderBoard);
+            Controls.Add(btnDemoLRU);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
@@ -42,5 +88,10 @@
         }
 
         #endregion
+
+        private Button btnDemoLRU;
+        private ListBox lboxOutput;
+        private Button btnClear;
+        private Button btnLaderBoard;
     }
 }
