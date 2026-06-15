@@ -1,3 +1,4 @@
+using InventoryManagementSystem;
 using learn_lld.LLD;
 using learn_lld.LLD.LRU;
 using learn_lld.LLD.ThreatEvent;
@@ -167,6 +168,12 @@ namespace learn_lld
                     $"Host={alert.Event.HostId}\n" +
                     $"EventType={alert.Event.EventType}\n");
             }
+        }
+
+        private void btnInventry_Click(object sender, EventArgs e)
+        {
+            InventoryService inventoryService = new InventoryService();
+            inventoryService.Test();
         }
     }
 }

@@ -33,6 +33,7 @@
             btnClear = new Button();
             btnLaderBoard = new Button();
             btnThreat = new Button();
+            btnInventry = new Button();
             SuspendLayout();
             // 
             // btnDemoLRU
@@ -48,16 +49,16 @@
             // lboxOutput
             // 
             lboxOutput.FormattingEnabled = true;
-            lboxOutput.Location = new Point(23, 70);
+            lboxOutput.Location = new Point(12, 357);
             lboxOutput.Name = "lboxOutput";
             lboxOutput.Size = new Size(434, 304);
             lboxOutput.TabIndex = 1;
             // 
             // btnClear
             // 
-            btnClear.Location = new Point(382, 41);
+            btnClear.Location = new Point(23, 52);
             btnClear.Name = "btnClear";
-            btnClear.Size = new Size(75, 23);
+            btnClear.Size = new Size(111, 23);
             btnClear.TabIndex = 2;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = true;
@@ -83,11 +84,22 @@
             btnThreat.UseVisualStyleBackColor = true;
             btnThreat.Click += btnThreat_Click;
             // 
+            // btnInventry
+            // 
+            btnInventry.Location = new Point(247, 52);
+            btnInventry.Name = "btnInventry";
+            btnInventry.Size = new Size(129, 23);
+            btnInventry.TabIndex = 4;
+            btnInventry.Text = "Inventory";
+            btnInventry.UseVisualStyleBackColor = true;
+            btnInventry.Click += btnInventry_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(469, 394);
+            ClientSize = new Size(878, 685);
+            Controls.Add(btnInventry);
             Controls.Add(btnThreat);
             Controls.Add(btnClear);
             Controls.Add(lboxOutput);
@@ -106,5 +118,6 @@
         private Button btnClear;
         private Button btnLaderBoard;
         private Button btnThreat;
+        private Button btnInventry;
     }
 }
