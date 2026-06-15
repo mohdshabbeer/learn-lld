@@ -2,4 +2,29 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs
+/.vs/
+
+# Visual Studio temporary files, build results, and debug folders
+
+# Build folders
+/bin/
+/obj/
+
+# Debug / Release folders
+Debug/
+Release/
+
+# Test results
+TestResults/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+
+# NuGet packages
+packages/
+
+# Publish artifacts
+publish/
+app.publish/
