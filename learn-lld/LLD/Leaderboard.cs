@@ -11,19 +11,36 @@ namespace learn_lld.LLD
 
         public long Score { get; set; }
 
-        // Used for tie-break
-        public long AchievementTime { get; set; }
+        // Sequence when current score was achieved
+        public long ScoreAchievedAt { get; set; }
+
+        public override string ToString()
+        {
+            return $"PlayerId={Id}, Score={Score}, AchievedAt={ScoreAchievedAt}";
+        }
     }
+
     public class LeaderboardComparer : IComparer<Player>
     {
         public int Compare(Player x, Player y)
         {
-            if (x.Score != y.Score)
-                return y.Score.CompareTo(x.Score);
+            if (ReferenceEquals(x, y))
+                return 0;
 
-            if (x.AchievementTime != y.AchievementTime)
-                return x.AchievementTime.CompareTo(y.AchievementTime);
+            // Higher score first
+            int scoreCompare = y.Score.CompareTo(x.Score);
 
+            if (scoreCompare != 0)
+                return scoreCompare;
+
+            // Earlier achievement wins
+            int achievementCompare =
+                x.ScoreAchievedAt.CompareTo(y.ScoreAchievedAt);
+
+            if (achievementCompare != 0)
+                return achievementCompare;
+
+            // Ensure uniqueness
             return x.Id.CompareTo(y.Id);
         }
     }
@@ -48,13 +65,13 @@ namespace learn_lld.LLD
 
         public void UpdateScore(int playerId, long delta)
         {
-            if (!_players.ContainsKey(playerId))
+            if (!_players.TryGetValue(playerId, out Player player))
             {
-                var player = new Player
+                player = new Player
                 {
                     Id = playerId,
                     Score = delta,
-                    AchievementTime = ++_sequence
+                    ScoreAchievedAt = ++_sequence
                 };
 
                 _players[playerId] = player;
@@ -63,20 +80,42 @@ namespace learn_lld.LLD
                 return;
             }
 
-            var existing = _players[playerId];
+            // Remove old ranking position
+            _ranking.Remove(player);
 
-            _ranking.Remove(existing);
+            // Update score
+            player.Score += delta;
 
-            existing.Score += delta;
+            // Record when this score was achieved
+            player.ScoreAchievedAt = ++_sequence;
 
-            existing.AchievementTime = ++_sequence;
-
-            _ranking.Add(existing);
+            // Reinsert
+            _ranking.Add(player);
         }
 
         public List<Player> GetTopN(int n)
         {
             return _ranking.Take(n).ToList();
+        }
+
+        public Player GetPlayer(int playerId)
+        {
+            return _players.TryGetValue(playerId, out Player? player) ? player : null;
+        }
+
+        public void PrintLeaderboard()
+        {
+            Console.WriteLine("Leaderboard:");
+
+            int rank = 1;
+
+            foreach (var player in _ranking)
+            {
+                Console.WriteLine(
+                    $"Rank {rank++}: Player {player.Id}, Score={player.Score}");
+            }
+
+            Console.WriteLine();
         }
     }
 }

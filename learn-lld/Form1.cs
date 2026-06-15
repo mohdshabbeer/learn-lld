@@ -1,6 +1,7 @@
 using learn_lld.LLD;
 using learn_lld.LLD.LRU;
 using Microsoft.VisualBasic.Logging;
+using System.Numerics;
 
 namespace learn_lld
 {
@@ -42,20 +43,49 @@ namespace learn_lld
 
         private void btnLaderBoard_Click(object sender, EventArgs e)
         {
-            var board = new Leaderboard();
+            //var board = new Leaderboard();
 
-            board.UpdateScore(1, 100);
-            board.UpdateScore(2, 200);
-            board.UpdateScore(3, 150);
-            board.UpdateScore(4, 350);
+            //board.UpdateScore(1, 100);
+            //board.UpdateScore(2, 200);
+            //board.UpdateScore(3, 150);
+            //board.UpdateScore(4, 350);
 
-            var top = board.GetTopN(2);
+            //var top = board.GetTopN(2);
 
-            foreach (var p in top)
+            //foreach (var p in top)
+            //{
+            //    //Console.WriteLine($"{p.Id} - {p.Score}");
+            //    Log($"{p.Id} - {p.Score}"); // 30
+            //}
+
+
+            var leaderboard = new Leaderboard();
+
+            leaderboard.UpdateScore(1, 100);
+            leaderboard.UpdateScore(2, 100);
+            leaderboard.UpdateScore(3, 150);
+
+            leaderboard.PrintLeaderboard();
+
+            Log("Top 2 Players");
+
+            foreach (var player in leaderboard.GetTopN(2))
             {
-                //Console.WriteLine($"{p.Id} - {p.Score}");
-                Log($"{p.Id} - {p.Score}"); // 30
+                Log(player.ToString());
             }
+            Log("--");
+
+            Log("Player 2 gains 100 points");
+
+            leaderboard.UpdateScore(2, 100);
+
+            leaderboard.PrintLeaderboard();
+
+            Log("Player 3 loses 50 points");
+
+            leaderboard.UpdateScore(3, -50);
+
+            leaderboard.PrintLeaderboard();
         }
     }
 }
