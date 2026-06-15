@@ -7,8 +7,8 @@
 # Visual Studio temporary files, build results, and debug folders
 
 # Build folders
-/bin/
-/obj/
+bin/
+obj/
 
 # Debug / Release folders
 Debug/
