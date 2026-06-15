@@ -32,6 +32,7 @@
             lboxOutput = new ListBox();
             btnClear = new Button();
             btnLaderBoard = new Button();
+            btnThreat = new Button();
             SuspendLayout();
             // 
             // btnDemoLRU
@@ -72,11 +73,22 @@
             btnLaderBoard.UseVisualStyleBackColor = true;
             btnLaderBoard.Click += btnLaderBoard_Click;
             // 
+            // btnThreat
+            // 
+            btnThreat.Location = new Point(247, 23);
+            btnThreat.Name = "btnThreat";
+            btnThreat.Size = new Size(129, 23);
+            btnThreat.TabIndex = 3;
+            btnThreat.Text = "Threat Deduction";
+            btnThreat.UseVisualStyleBackColor = true;
+            btnThreat.Click += btnThreat_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(469, 394);
+            Controls.Add(btnThreat);
             Controls.Add(btnClear);
             Controls.Add(lboxOutput);
             Controls.Add(btnLaderBoard);
@@ -93,5 +105,6 @@
         private ListBox lboxOutput;
         private Button btnClear;
         private Button btnLaderBoard;
+        private Button btnThreat;
     }
 }
